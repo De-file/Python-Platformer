@@ -64,9 +64,9 @@ def get_background(name):
     _, _, width, height, = image.get_rect()
     tiles = []
 
-    for i in range( WIDTH // width + 1):
+    for i in range(WIDTH // width + 1):
         for j in range (HEIGHT // height +1):
-            pos =( i * width, j * height)
+            pos =(i * width, j * height)
             tiles.append(pos)
 
     return tiles, image
@@ -98,7 +98,7 @@ def main(window):
     clock = pygame.time.Clock()
     background, bg_image = get_background("Green.png")
 
-    player = Player(100,100, 50, 50)
+    player = Player(100, 100, 50, 50)
 
     run = True
     while run:
