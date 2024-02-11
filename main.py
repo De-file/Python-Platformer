@@ -36,9 +36,21 @@ class Player(pygame.sprite.Sprite):
             self.animation_count = 0
 
     def move_right(self, vel):
-        self.x_vel_vel = vel
+        self.x_vel = vel
         if self.direction != "right":
             self.direction = "right"
+            self.animation_count = 0
+
+    def move_down(self, vel):
+        self.y_vel = vel
+        if self.direction != "down":
+            self.direction = "down"
+            self.animation_count = 0
+
+    def move_up(self, vel):
+        self.y_vel = -vel
+        if self.direction != "up":
+            self.direction = "up"
             self.animation_count = 0
 
     def loop(self, fps):
@@ -71,10 +83,16 @@ def handle_move(player):
     keys = pygame.key.get_pressed()
 
     player.x_vel = 0
-    if keys[pygame.K_a]:
+    if keys[pygame.K_LEFT]:
         player.move_left(PLAYER_VEL)    
-    if keys[pygame.K_d]:
+    if keys[pygame.K_RIGHT]:
         player.move_right(PLAYER_VEL)
+
+    player.y_vel = 0
+    if keys[pygame.K_UP]:
+        player.move_up(PLAYER_VEL)
+    if keys[pygame.K_DOWN]:
+        player.move_down(PLAYER_VEL)
 
 def main(window):
     clock = pygame.time.Clock()
